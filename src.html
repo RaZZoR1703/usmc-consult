@@ -236,14 +236,20 @@ section{padding-block:clamp(80px,11vw,150px)}
 
 /* Clients */
 .clients-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:56px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
-.logos li{background:var(--plate);height:132px;display:grid;place-items:center;padding:20px}
-.logos li.note{background:var(--surface);color:var(--muted);font-size:15px;line-height:1.5;place-items:end start;text-align:left}
-.logos img{max-width:132px;max-height:64px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.72;transition:filter .3s ease,opacity .3s ease}
-.logos .note a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:500;text-decoration:none}
-.logos .note svg{transition:transform .3s var(--ease-out)}
-@media (hover:hover) and (pointer:fine){.logos li:hover img{filter:none;opacity:1}.logos .note a:hover svg{transform:translateX(4px)}}
-@media (max-width:760px){.logos{grid-template-columns:repeat(2,minmax(0,1fr))}.logos li{height:112px}}
+.marquee{position:relative;margin-top:56px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;width:max-content;animation:slide 48s linear infinite}
+.marquee:hover .track,.marquee:focus-within .track,.marquee.paused .track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+.group{display:flex;gap:16px;padding-right:16px}
+.plate{width:184px;height:112px;flex:none;display:grid;place-items:center;background:var(--plate);border-radius:14px;box-shadow:0 1px 0 var(--line),0 10px 30px -22px rgba(12,22,37,.5)}
+.plate img{max-width:128px;max-height:62px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.78;transition:filter .3s ease,opacity .3s ease}
+@media (hover:hover) and (pointer:fine){.plate:hover img{filter:none;opacity:1}}
+.pause{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font:500 14px/1 var(--f-body);color:var(--muted);padding:10px 14px;border-radius:10px;box-shadow:inset 0 0 0 1px var(--line);transition:color .2s ease,box-shadow .2s ease}
+@media (hover:hover) and (pointer:fine){.pause:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}}
+.pause:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){
+  .track{animation:none;width:auto}.group{flex-wrap:wrap;justify-content:center;padding:0}.group[aria-hidden]{display:none}.marquee{mask-image:none;-webkit-mask-image:none}.pause{display:none}
+}
 
 /* Contact */
 #contact{background:var(--surface);border-top:1px solid var(--line)}
@@ -439,23 +445,25 @@ footer a{text-decoration:none}
         <h2 class="h2" data-i18n="cl.h">Нам доверяют</h2>
         <p class="intro" data-i18n="cl.sub">Международные организации, государственные структуры и частные компании.</p>
       </div>
+      <button class="pause" type="button" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24"><path class="pp" d="M9 6v12M15 6v12"/></svg><span data-i18n="cl.pause">Остановить ленту</span></button>
     </div>
   </div>
-  <div class="wrap">
-    <ul class="logos">
-        <li><img src="{{LOGO:Ministry.png}}" alt="Министерство инновационного развития Республики Узбекистан"></li>
-        <li><img src="{{LOGO:Acted.png}}" alt="ACTED"></li>
-        <li><img src="{{LOGO:PKF.png}}" alt="PKF"></li>
-        <li><img src="{{LOGO:Cenomi.png}}" alt="Cenomi"></li>
-        <li><img src="{{LOGO:cinabon-1.png}}" alt="Cinnabon"></li>
-        <li><img src="{{LOGO:TheUnion.png}}" alt="The Union"></li>
-        <li><img src="{{LOGO:FOM.png}}" alt="FOM"></li>
-        <li><img src="{{LOGO:Forward.png}}" alt="Forward"></li>
-        <li><img src="{{LOGO:TadbirkorAyol-1.png}}" alt="Tadbirkor Ayol"></li>
-        <li><img src="{{LOGO:TN_logging-1.png}}" alt="TN Logging Asia"></li>
-        <li><img src="{{LOGO:AziaKraft-1.jpg}}" alt="AziaKraft"></li>
-      <li class="note"><a href="#contact"><span data-i18n="cl.note">Обсудить ваш проект</span> <svg class="ic"><use href="#arrow"/></svg></a></li>
-    </ul>
+  <div class="marquee">
+    <div class="track">
+      <ul class="group">
+        <li class="plate"><img src="{{LOGO:Ministry.png}}" alt="Министерство инновационного развития Республики Узбекистан"></li>
+        <li class="plate"><img src="{{LOGO:Acted.png}}" alt="ACTED"></li>
+        <li class="plate"><img src="{{LOGO:PKF.png}}" alt="PKF"></li>
+        <li class="plate"><img src="{{LOGO:Cenomi.png}}" alt="Cenomi"></li>
+        <li class="plate"><img src="{{LOGO:cinabon-1.png}}" alt="Cinnabon"></li>
+        <li class="plate"><img src="{{LOGO:TheUnion.png}}" alt="The Union"></li>
+        <li class="plate"><img src="{{LOGO:FOM.png}}" alt="FOM"></li>
+        <li class="plate"><img src="{{LOGO:Forward.png}}" alt="Forward"></li>
+        <li class="plate"><img src="{{LOGO:TadbirkorAyol-1.png}}" alt="Tadbirkor Ayol"></li>
+        <li class="plate"><img src="{{LOGO:TN_logging-1.png}}" alt="TN Logging Asia"></li>
+        <li class="plate"><img src="{{LOGO:AziaKraft-1.jpg}}" alt="AziaKraft"></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -545,7 +553,7 @@ en: {
 "tr3.l":"<li>Intellectual property management: legal aspects</li><li>IT law</li><li>Contract management</li><li>Risk management</li><li>Describing business processes</li>",
 "tr4.h":"International Compliance Association","tr4.p":"USMC Consult is the ICA partner organisation in Uzbekistan. Through us, compliance specialists can take ICA training and qualifications on preferential terms.",
 "tr4.cta1":"Ask about training terms","tr4.cta2":"ICA website",
-"cl.h":"Trusted by","cl.sub":"International organisations, government bodies and private companies.","cl.note":"Discuss your project",
+"cl.h":"Trusted by","cl.sub":"International organisations, government bodies and private companies.","cl.pause":"Pause logos","cl.play":"Play logos",
 "ct.h":"Tell us about your task","ct.p":"Call us or send a message. We will discuss the project and suggest how to work together.","ct.phone":"Phone","ct.copy":"Copy number","ct.copied":"Number copied","ct.tg":"Message on Telegram"
 },
 uz: {
@@ -591,10 +599,10 @@ uz: {
 "tr3.l":"<li>Intellektual mulkni boshqarish: huquqiy jihatlar</li><li>IT huquqi</li><li>Shartnomalarni boshqarish (Contract Management)</li><li>Xavflarni boshqarish</li><li>Biznes jarayonlarini tavsiflash</li>",
 "tr4.h":"International Compliance Association","tr4.p":"USMC Consult ICA’ning O‘zbekistondagi hamkor tashkiloti. Biz orqali komplayens mutaxassislari ICA dasturlari bo‘yicha imtiyozli shartlarda o‘qiydi va malakasini oshiradi.",
 "tr4.cta1":"O‘qish shartlarini bilish","tr4.cta2":"ICA sayti",
-"cl.h":"Bizga ishonishadi","cl.sub":"Xalqaro tashkilotlar, davlat tuzilmalari va xususiy kompaniyalar.","cl.note":"Loyihangizni muhokama qilish",
+"cl.h":"Bizga ishonishadi","cl.sub":"Xalqaro tashkilotlar, davlat tuzilmalari va xususiy kompaniyalar.","cl.pause":"Lentani to‘xtatish","cl.play":"Lentani yoqish",
 "ct.h":"Vazifangiz haqida aytib bering","ct.p":"Qo‘ng‘iroq qiling yoki messenjerga yozing. Loyihani muhokama qilib, ish formatini taklif qilamiz.","ct.phone":"Telefon","ct.copy":"Raqamni nusxalash","ct.copied":"Raqam nusxalandi","ct.tg":"Telegramga yozish"
 }};
-I18N.ru = {"ct.copied":"Номер скопирован"};
+I18N.ru = {"cl.play":"Запустить ленту","ct.copied":"Номер скопирован"};
 document.querySelectorAll('[data-i18n]').forEach(el => { I18N.ru[el.dataset.i18n] ??= el.innerHTML; });
 document.querySelectorAll('[data-i18n-alt]').forEach(el => { I18N.ru[el.dataset.i18nAlt] ??= el.alt; });
 const META = {ru:"USMC Consult — юридический, финансовый и управленческий консалтинг в Узбекистане и Центральной Азии.", en:"USMC Consult: legal, financial and management consulting in Uzbekistan and Central Asia.", uz:"USMC Consult: O‘zbekiston va Markaziy Osiyoda yuridik, moliyaviy va boshqaruv konsaltingi."};
@@ -608,7 +616,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = t(el.dataset.i18nAlt); });
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.querySelector('meta[name="description"]').content = META[l];
-  moveInd();
+  syncPause(); moveInd();
   try { localStorage.setItem('usmc-lang', l); } catch(e) {}
 }
 document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -646,6 +654,13 @@ tabs.forEach((x,i) => {
 addEventListener('resize', moveInd);
 document.fonts?.ready.then(moveInd);
 
+
+/* client marquee: duplicate once for a seamless loop, with a real pause control */
+const track = document.querySelector('.track'), g = track.firstElementChild.cloneNode(true);
+g.setAttribute('aria-hidden', 'true'); g.querySelectorAll('img').forEach(i => i.alt = ''); track.append(g);
+const marquee = document.querySelector('.marquee'), pauseBtn = document.querySelector('.pause');
+function syncPause(){ const p = marquee.classList.contains('paused'); pauseBtn.setAttribute('aria-pressed', p); pauseBtn.querySelector('span').textContent = t(p ? 'cl.play' : 'cl.pause'); pauseBtn.querySelector('.pp').setAttribute('d', p ? 'M8 5.5v13l11-6.5z' : 'M9 6v12M15 6v12'); }
+pauseBtn.addEventListener('click', () => { marquee.classList.toggle('paused'); syncPause(); });
 
 /* copy phone */
 const toast = document.querySelector('.toast'); let tt;
