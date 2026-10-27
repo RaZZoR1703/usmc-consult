@@ -1,5 +1,6 @@
 <title>USMC Consult</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C1625'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='15' font-weight='700' fill='%23CFA566' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
 <meta name="description" content="USMC Consult — юридический, финансовый и управленческий консалтинг в Узбекистане и Центральной Азии.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,12 +12,12 @@
   --lapis:#1C4C8E; --lapis-soft:rgba(28,76,142,.07); --brass:#9A6F2E;
   --band:#0B1422; --band-ink:#E9ECF1; --band-muted:#A3AEC0; --band-line:rgba(233,236,241,.14); --band-brass:#CFA566;
   --plate:#FFFFFF;
-  --hero-bg:#F0F5FA; --hero-muted:#3C4A5E; --aur1:rgba(120,170,230,.45); --aur2:rgba(222,184,120,.24); --aur3:rgba(255,255,255,.95); --aur4:rgba(110,160,235,.22);
+  --hero-bg:#F0F5FA; --hero-muted:#3C4A5E; --aur1:rgba(120,170,230,.30); --aur2:rgba(222,184,120,.18); --aur3:rgba(255,255,255,.9); --aur4:rgba(110,160,235,.14);
   --taur1:rgba(50,100,185,.42); --taur2:rgba(207,165,102,.20); --taur3:rgba(110,150,215,.16);
   --f-display:"Manrope", "Segoe UI", system-ui, sans-serif;
   --f-body:"Golos Text", "Segoe UI", system-ui, -apple-system, sans-serif;
   --ease-out:cubic-bezier(0.23,1,0.32,1); --ease-in-out:cubic-bezier(0.77,0,0.175,1);
-  --wrap:1240px;
+  --wrap:1240px; --r-ctl:10px; --r-card:14px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0A111C; --surface:#101A29; --ink:#E6EAF0; --muted:#9BA7B8; --line:rgba(230,234,240,.12);
@@ -50,10 +51,10 @@ svg.ic{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
 .brand svg{width:78px;height:36px;fill:currentColor}
 .nav{display:flex;gap:4px;margin-left:auto}
-.nav a{position:relative;text-decoration:none;font-size:15px;padding:8px 12px;border-radius:999px;transition:background-color .2s ease}
+.nav a{position:relative;text-decoration:none;font-size:15px;padding:8px 12px;border-radius:8px;transition:background-color .2s ease}
 @media (hover:hover) and (pointer:fine){.nav a:hover{background:color-mix(in oklab,currentColor 9%,transparent)}}
-.langs{display:flex;gap:2px;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 22%,transparent)}
-.langs button{all:unset;cursor:pointer;font:500 12px/1 var(--f-body);letter-spacing:.08em;padding:7px 9px;border-radius:999px;transition:background-color .2s ease,color .2s ease}
+.langs{display:flex;gap:2px;padding:3px;border-radius:8px;box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 22%,transparent)}
+.langs button{all:unset;cursor:pointer;font:500 12px/1 var(--f-body);letter-spacing:.08em;padding:7px 9px;border-radius:8px;transition:background-color .2s ease,color .2s ease}
 .langs button[aria-pressed="true"]{background:currentColor}
 .langs button[aria-pressed="true"] span{color:var(--paper)}
 .langs button:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
@@ -63,7 +64,7 @@ svg.ic{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width
     opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .22s var(--ease-out),transform .22s var(--ease-out)}
   .nav a{font:500 24px/1.3 var(--f-display);letter-spacing:-.03em;padding:12px 0;border-radius:0;border-bottom:1px solid var(--line)}
   .nav.open{opacity:1;transform:none;pointer-events:auto}
-  .menu-btn{all:unset;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:500 14px/1 var(--f-body);padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 30%,transparent)}
+  .menu-btn{all:unset;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font:500 14px/1 var(--f-body);padding:10px 14px;border-radius:10px;box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 30%,transparent)}
   .langs{margin-left:auto}
   .hdr .btn{display:none}
 }
@@ -71,16 +72,16 @@ svg.ic{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width
 @media (prefers-reduced-motion:reduce){.nav{transition:opacity .2s ease}}
 
 /* ---------- Buttons ---------- */
-.btn{--bg:var(--ink);--fg:var(--paper);position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:12px;padding:15px 22px;border-radius:999px;border:0;cursor:pointer;
+.btn{--bg:var(--ink);--fg:var(--paper);position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;gap:12px;padding:15px 22px;border-radius:var(--r-ctl);border:0;cursor:pointer;
   font:500 15px/1 var(--f-body);text-decoration:none;background:var(--bg);color:var(--fg);white-space:nowrap;
   transition:transform .16s var(--ease-out),box-shadow .25s ease;box-shadow:0 1px 1px rgba(0,0,0,.08),0 8px 24px -14px rgba(0,0,0,.45)}
-.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--sweep,var(--lapis));clip-path:circle(0% at var(--mx,50%) var(--my,50%));transition:clip-path .45s var(--ease-out)}
-.btn .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:color-mix(in oklab,var(--fg) 16%,transparent);transition:transform .3s var(--ease-out)}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--sweep,var(--lapis));transform:translateY(101%);transition:transform .35s var(--ease-out)}
+.btn .arr{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:color-mix(in oklab,var(--fg) 16%,transparent);transition:transform .3s var(--ease-out)}
 .btn .arr svg{width:12px;height:12px}
 .btn:active{transform:scale(.97)}
 @media (hover:hover) and (pointer:fine){
-  .btn:hover::before{clip-path:circle(150% at var(--mx,50%) var(--my,50%))}
-  .btn:hover .arr{transform:translateX(3px) rotate(-45deg)}
+  .btn:hover::before{transform:none}
+  .btn:hover .arr{transform:translateX(3px)}
 }
 .btn-brass{--bg:var(--band-brass);--fg:#0B1422;--sweep:#E7C68F}
 .btn-ghost{--bg:transparent;--fg:currentColor;--sweep:color-mix(in oklab,currentColor 12%,transparent);box-shadow:inset 0 0 0 1px color-mix(in oklab,currentColor 32%,transparent)}
@@ -89,6 +90,8 @@ svg.ic{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width
 
 /* ---------- Hero ---------- */
 .hero{position:relative;isolation:isolate;background:var(--hero-bg);color:var(--ink);margin-top:-76px;padding-top:76px;overflow:hidden}
+.hero::after,#training::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .hero canvas,#training canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,5vw,80px);align-items:center;padding-block:clamp(40px,7vw,96px) 0}
 .hero h1{font-weight:500;font-size:clamp(2.5rem,5.3vw,4.8rem);line-height:1.03;letter-spacing:-.04em;max-width:12em}
@@ -98,13 +101,12 @@ svg.ic{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width
 /* hero illustration: a project in progress, built from the firm's own services */
 .hv{position:relative;min-height:580px;perspective:1400px;min-width:0}
 .hv-stack{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s var(--ease-out)}
-.card{position:absolute;color:var(--ink);border-radius:22px;background:color-mix(in oklab,var(--surface) 78%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);
-  box-shadow:inset 0 1px 0 color-mix(in oklab,#fff 55%,transparent),0 0 0 1px var(--line),0 36px 70px -34px rgba(12,22,37,.5)}
+.card{position:absolute;color:var(--ink);border-radius:var(--r-card);background:var(--surface);box-shadow:0 0 0 1px var(--line),0 1px 2px rgba(12,22,37,.06),0 24px 48px -28px rgba(12,22,37,.38)}
 .c-main{left:7%;right:2%;top:68px;padding:26px 26px 22px}
 .c-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
 .c-head small,.c-ica small,.c-team small{display:block;font-size:12.5px;color:var(--muted)}
 .c-head b{display:block;margin-top:4px;font:600 19px/1.25 var(--f-display);letter-spacing:-.02em}
-.pill{display:inline-flex;align-items:center;gap:6px;flex:none;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:500;background:var(--lapis-soft);color:var(--lapis);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--lapis) 22%,transparent)}
+.pill{display:inline-flex;align-items:center;gap:6px;flex:none;padding:6px 10px;border-radius:8px;font-size:12px;font-weight:500;background:var(--lapis-soft);color:var(--lapis);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--lapis) 22%,transparent)}
 .pill i,.steps .now .ck i{width:6px;height:6px;border-radius:50%;background:currentColor}
 .steps{margin-top:20px}
 .steps li{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15px}
@@ -117,12 +119,12 @@ svg.ic{width:1em;height:1em;flex:none;stroke:currentColor;fill:none;stroke-width
 .bar span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--lapis),var(--brass));transform-origin:left;transform:scaleX(.62)}
 .bar-row{display:flex;justify-content:space-between;gap:12px;margin-top:8px;font-size:12.5px;color:var(--muted)}
 .c-ica{right:0;top:0;display:flex;align-items:center;gap:12px;padding:14px 20px 14px 14px}
-.seal{width:42px;height:42px;flex:none;border-radius:13px;display:grid;place-items:center;background:var(--ink);color:var(--brass)}
+.seal{width:42px;height:42px;flex:none;border-radius:9px;display:grid;place-items:center;background:var(--ink);color:var(--brass)}
 .seal svg{width:20px;height:20px}
 .c-ica b,.c-team b{display:block;font:600 15px/1.25 var(--f-display);letter-spacing:-.01em}
 .c-team{left:0;bottom:0;padding:16px 18px;display:grid;gap:10px}
 .roles{display:flex;flex-wrap:wrap;gap:6px}
-.roles span{font-size:13px;padding:6px 11px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);background:color-mix(in oklab,var(--surface) 60%,transparent)}
+.roles span{font-size:13px;padding:6px 11px;border-radius:8px;box-shadow:inset 0 0 0 1px var(--line);background:color-mix(in oklab,var(--surface) 60%,transparent)}
 @media (max-width:900px){
   .hv{min-height:0;perspective:none}.hv-stack{position:static;display:grid;gap:12px}
   .card{position:relative;inset:auto}.c-main{order:-1}.c-ica,.c-team{justify-self:start}
@@ -161,12 +163,6 @@ section{padding-block:clamp(80px,11vw,150px)}
 .sticky{position:sticky;top:120px}
 @media (max-width:900px){.sticky{position:static}}
 
-@supports (animation-timeline:view()){
-  @media (prefers-reduced-motion:no-preference){
-    .reveal{animation:surface linear both;animation-timeline:view();animation-range:entry 0% entry 55%}
-    @keyframes surface{from{opacity:.5;transform:translateY(32px)}}
-  }
-}
 
 /* About */
 .about-body{display:grid;gap:22px;font-size:18px;max-width:36em}
@@ -212,7 +208,6 @@ section{padding-block:clamp(80px,11vw,150px)}
 .approach>div{padding:36px 40px 40px 0;border-bottom:1px solid var(--line);min-width:0}
 .approach>div:nth-child(even){padding-left:40px;padding-right:0;border-left:1px solid var(--line)}
 .approach h3{font-size:clamp(1.4rem,2vw,1.7rem);line-height:1.2;display:flex;gap:14px;align-items:baseline}
-.approach h3 svg{width:22px;height:22px;color:var(--brass);flex:none;transform:translateY(3px)}
 .approach p{margin-top:14px;color:var(--muted);max-width:30em}
 @media (max-width:760px){.approach{grid-template-columns:1fr}.approach>div,.approach>div:nth-child(even){padding:28px 0;border-left:0}}
 
@@ -241,20 +236,14 @@ section{padding-block:clamp(80px,11vw,150px)}
 
 /* Clients */
 .clients-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.marquee{position:relative;margin-top:56px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.track{display:flex;width:max-content;animation:slide 48s linear infinite}
-.marquee:hover .track,.marquee:focus-within .track,.marquee.paused .track{animation-play-state:paused}
-@keyframes slide{to{transform:translateX(-50%)}}
-.group{display:flex;gap:16px;padding-right:16px}
-.plate{width:184px;height:112px;flex:none;display:grid;place-items:center;background:var(--plate);border-radius:14px;box-shadow:0 1px 0 var(--line),0 10px 30px -22px rgba(12,22,37,.5)}
-.plate img{max-width:128px;max-height:62px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.78;transition:filter .3s ease,opacity .3s ease}
-@media (hover:hover) and (pointer:fine){.plate:hover img{filter:none;opacity:1}}
-.pause{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font:500 14px/1 var(--f-body);color:var(--muted);padding:10px 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line);transition:color .2s ease,box-shadow .2s ease}
-@media (hover:hover) and (pointer:fine){.pause:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}}
-.pause:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){
-  .track{animation:none;width:auto}.group{flex-wrap:wrap;justify-content:center;padding:0}.group[aria-hidden]{display:none}.marquee{mask-image:none;-webkit-mask-image:none}.pause{display:none}
-}
+.logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:56px;background:var(--line);border:1px solid var(--line);border-radius:var(--r-card);overflow:hidden}
+.logos li{background:var(--plate);height:132px;display:grid;place-items:center;padding:20px}
+.logos li.note{background:var(--surface);color:var(--muted);font-size:15px;line-height:1.5;place-items:end start;text-align:left}
+.logos img{max-width:132px;max-height:64px;object-fit:contain;filter:grayscale(1) contrast(1.05);opacity:.72;transition:filter .3s ease,opacity .3s ease}
+.logos .note a{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:500;text-decoration:none}
+.logos .note svg{transition:transform .3s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.logos li:hover img{filter:none;opacity:1}.logos .note a:hover svg{transform:translateX(4px)}}
+@media (max-width:760px){.logos{grid-template-columns:repeat(2,minmax(0,1fr))}.logos li{height:112px}}
 
 /* Contact */
 #contact{background:var(--surface);border-top:1px solid var(--line)}
@@ -267,7 +256,7 @@ section{padding-block:clamp(80px,11vw,150px)}
 @media (hover:hover) and (pointer:fine){.phone a.num:hover{background-size:100% 1px}}
 .phone .row2{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px 10px 16px;border-radius:999px;text-decoration:none;font-size:15px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s ease,background-color .2s ease,transform .16s var(--ease-out)}
+.chip{display:inline-flex;align-items:center;gap:8px;padding:10px 14px 10px 16px;border-radius:8px;text-decoration:none;font-size:15px;box-shadow:inset 0 0 0 1px var(--line);transition:box-shadow .2s ease,background-color .2s ease,transform .16s var(--ease-out)}
 .chip svg{width:13px;height:13px;transition:transform .3s var(--ease-out)}
 .chip:active{transform:scale(.97)}
 @media (hover:hover) and (pointer:fine){.chip:hover{box-shadow:inset 0 0 0 1px var(--ink);background:var(--lapis-soft)}.chip:hover svg{transform:translate(2px,-2px)}}
@@ -281,7 +270,7 @@ footer nav{display:flex;flex-wrap:wrap;gap:6px 22px}
 footer a{text-decoration:none}
 @media (hover:hover) and (pointer:fine){footer a:hover{color:var(--band-ink)}}
 
-.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:70;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:999px;font-size:14.5px;transition:opacity .2s ease,transform .25s var(--ease-out)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:70;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:12px 18px;border-radius:10px;font-size:14.5px;transition:opacity .2s ease,transform .25s var(--ease-out)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 </style>
 
@@ -318,8 +307,8 @@ footer a{text-decoration:none}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1 class="in" style="--i:0" data-i18n="hero.title">Юридический и управленческий консалтинг <em>в&nbsp;Узбекистане</em></h1>
-        <p class="lead in" style="--i:1" data-i18n="hero.lead">Сопровождаем компании в Узбекистане и Центральной Азии: от учредительных документов и сделок до привлечения инвестиций и систем комплаенс. Юристы, финансисты и HR-специалисты работают над вашим проектом одной командой.</p>
+        <h1 class="in" style="--i:0" data-i18n="hero.title">Право, финансы и HR для бизнеса <em>в&nbsp;Узбекистане</em></h1>
+        <p class="lead in" style="--i:1" data-i18n="hero.lead">Берём на себя юридическую и управленческую часть: документы и сделки, налоговые льготы и инвестиции, кадры и комплаенс. Над проектом работает одна команда, и вам не нужно отдельно искать юриста, финансиста и HR-консультанта.</p>
         <div class="actions in" style="--i:2">
           <a class="btn" href="#contact" data-magnet><span data-i18n="hero.cta1">Обсудить проект</span><span class="arr"><svg class="ic"><use href="#arrow"/></svg></span></a>
           <a class="btn btn-ghost" href="#practice"><span data-i18n="hero.cta2">Все направления</span></a>
@@ -354,14 +343,14 @@ footer a{text-decoration:none}
 <section id="about">
   <div class="wrap">
     <div class="split">
-      <h2 class="h2 sticky reveal" data-i18n="about.h">Независимая консалтинговая компания</h2>
-      <div class="about-body reveal">
+      <h2 class="h2 sticky" data-i18n="about.h">Независимая консалтинговая компания</h2>
+      <div class="about-body">
         <p data-i18n="about.p1">USMC Consult занимается правовыми, институциональными и социально-экономическими исследованиями и консультациями для бизнеса Узбекистана и стран Центральной Азии.</p>
         <p data-i18n="about.p2">Для нас главное в работе — развитие бизнеса клиента. Мы помогаем внедрять в Узбекистане международные стандарты прозрачного и эффективного партнёрства, учитываем тенденции рынка и опыт прошлых проектов.</p>
         <p data-i18n="about.p3">В команде собраны специалисты разных направлений, поэтому каждую задачу мы рассматриваем целиком: с правовой, финансовой и управленческой стороны.</p>
       </div>
     </div>
-    <figure class="mission reveal">
+    <figure class="mission">
       <figcaption data-i18n="mission.cap">Наша миссия</figcaption>
       <blockquote data-i18n="mission.q">Создавать для партнёров эффективную и безопасную бизнес-среду и давать им широкий спектр качественных услуг в одном месте.</blockquote>
     </figure>
@@ -395,13 +384,13 @@ footer a{text-decoration:none}
 
 <section id="approach">
   <div class="wrap">
-    <h2 class="h2 reveal" data-i18n="appr.h">Как работает команда</h2>
-    <p class="intro reveal" data-i18n="appr.intro">Нас объединяет желание развивать бизнес и правовую культуру страны. Вот на чём строится работа с каждым клиентом.</p>
+    <h2 class="h2" data-i18n="appr.h">Как работает команда</h2>
+    <p class="intro" data-i18n="appr.intro">Нас объединяет желание развивать бизнес и правовую культуру страны. Вот на чём строится работа с каждым клиентом.</p>
     <div class="approach">
-      <div class="reveal"><h3><svg class="ic" viewBox="0 0 24 24"><path d="M12 2.5 14.6 9.4 21.5 12 14.6 14.6 12 21.5 9.4 14.6 2.5 12 9.4 9.4Z"/></svg><span data-i18n="a1.t">Смотрим на задачу с разных сторон</span></h3><p data-i18n="a1.d">Юристы, финансисты и HR-специалисты обсуждают проект вместе. Разные мнения и навыки помогают быстро найти решение, которое работает в условиях нашего региона.</p></div>
-      <div class="reveal"><h3><svg class="ic" viewBox="0 0 24 24"><path d="M12 2.5 14.6 9.4 21.5 12 14.6 14.6 12 21.5 9.4 14.6 2.5 12 9.4 9.4Z"/></svg><span data-i18n="a2.t">Индивидуальный подход</span></h3><p data-i18n="a2.d">Профессионализм и вовлечённость в каждый проект лежат в основе работы с клиентами. Решение строим под вашу ситуацию.</p></div>
-      <div class="reveal"><h3><svg class="ic" viewBox="0 0 24 24"><path d="M12 2.5 14.6 9.4 21.5 12 14.6 14.6 12 21.5 9.4 14.6 2.5 12 9.4 9.4Z"/></svg><span data-i18n="a3.t">Международный опыт</span></h3><p data-i18n="a3.d">Участвуем в международных государственных и частных проектах и переносим этот опыт в практику для местного бизнеса.</p></div>
-      <div class="reveal"><h3><svg class="ic" viewBox="0 0 24 24"><path d="M12 2.5 14.6 9.4 21.5 12 14.6 14.6 12 21.5 9.4 14.6 2.5 12 9.4 9.4Z"/></svg><span data-i18n="a4.t">Постоянно учимся</span></h3><p data-i18n="a4.d">Специалисты регулярно проходят профильное обучение и сертификацию и расширяют компетенции, чтобы качество услуг росло.</p></div>
+      <div><h3><span data-i18n="a1.t">Смотрим на задачу с разных сторон</span></h3><p data-i18n="a1.d">Юристы, финансисты и HR-специалисты обсуждают проект вместе. Разные мнения и навыки помогают быстро найти решение, которое работает в условиях нашего региона.</p></div>
+      <div><h3><span data-i18n="a2.t">Индивидуальный подход</span></h3><p data-i18n="a2.d">Профессионализм и вовлечённость в каждый проект лежат в основе работы с клиентами. Решение строим под вашу ситуацию.</p></div>
+      <div><h3><span data-i18n="a3.t">Международный опыт</span></h3><p data-i18n="a3.d">Участвуем в международных государственных и частных проектах и переносим этот опыт в практику для местного бизнеса.</p></div>
+      <div><h3><span data-i18n="a4.t">Постоянно учимся</span></h3><p data-i18n="a4.d">Специалисты регулярно проходят профильное обучение и сертификацию и расширяют компетенции, чтобы качество услуг росло.</p></div>
     </div>
   </div>
 </section>
@@ -409,8 +398,8 @@ footer a{text-decoration:none}
 <section id="training">
   <canvas id="aurora2" aria-hidden="true"></canvas>
   <div class="wrap">
-    <h2 class="h2 reveal" data-i18n="tr.h">Тренинги</h2>
-    <p class="intro reveal" data-i18n="tr.intro">Программы для руководителей, корпоративных юристов, HR- и комплаенс-специалистов.</p>
+    <h2 class="h2" data-i18n="tr.h">Тренинги</h2>
+    <p class="intro" data-i18n="tr.intro">Программы для руководителей, корпоративных юристов, HR- и комплаенс-специалистов.</p>
     <div class="tabs" role="tablist" aria-label="Тренинги">
       <button role="tab" id="tab-1" aria-controls="tp-1" aria-selected="true" data-i18n="tab1">Кадровое делопроизводство и HR</button>
       <button role="tab" id="tab-2" aria-controls="tp-2" aria-selected="false" tabindex="-1" data-i18n="tab2">Комплаенс</button>
@@ -447,38 +436,36 @@ footer a{text-decoration:none}
   <div class="wrap">
     <div class="clients-head">
       <div>
-        <h2 class="h2 reveal" data-i18n="cl.h">Нам доверяют</h2>
-        <p class="intro reveal" data-i18n="cl.sub">Международные организации, государственные структуры и частные компании.</p>
+        <h2 class="h2" data-i18n="cl.h">Нам доверяют</h2>
+        <p class="intro" data-i18n="cl.sub">Международные организации, государственные структуры и частные компании.</p>
       </div>
-      <button class="pause" type="button" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24"><path class="pp" d="M9 6v12M15 6v12"/></svg><span data-i18n="cl.pause">Остановить ленту</span></button>
     </div>
   </div>
-  <div class="marquee">
-    <div class="track">
-      <ul class="group">
-        <li class="plate"><img src="{{LOGO:Ministry.png}}" alt="Министерство инновационного развития Республики Узбекистан"></li>
-        <li class="plate"><img src="{{LOGO:Acted.png}}" alt="ACTED"></li>
-        <li class="plate"><img src="{{LOGO:PKF.png}}" alt="PKF"></li>
-        <li class="plate"><img src="{{LOGO:Cenomi.png}}" alt="Cenomi"></li>
-        <li class="plate"><img src="{{LOGO:cinabon-1.png}}" alt="Cinnabon"></li>
-        <li class="plate"><img src="{{LOGO:TheUnion.png}}" alt="The Union"></li>
-        <li class="plate"><img src="{{LOGO:FOM.png}}" alt="FOM"></li>
-        <li class="plate"><img src="{{LOGO:Forward.png}}" alt="Forward"></li>
-        <li class="plate"><img src="{{LOGO:TadbirkorAyol-1.png}}" alt="Tadbirkor Ayol"></li>
-        <li class="plate"><img src="{{LOGO:TN_logging-1.png}}" alt="TN Logging Asia"></li>
-        <li class="plate"><img src="{{LOGO:AziaKraft-1.jpg}}" alt="AziaKraft"></li>
-      </ul>
-    </div>
+  <div class="wrap">
+    <ul class="logos">
+        <li><img src="{{LOGO:Ministry.png}}" alt="Министерство инновационного развития Республики Узбекистан"></li>
+        <li><img src="{{LOGO:Acted.png}}" alt="ACTED"></li>
+        <li><img src="{{LOGO:PKF.png}}" alt="PKF"></li>
+        <li><img src="{{LOGO:Cenomi.png}}" alt="Cenomi"></li>
+        <li><img src="{{LOGO:cinabon-1.png}}" alt="Cinnabon"></li>
+        <li><img src="{{LOGO:TheUnion.png}}" alt="The Union"></li>
+        <li><img src="{{LOGO:FOM.png}}" alt="FOM"></li>
+        <li><img src="{{LOGO:Forward.png}}" alt="Forward"></li>
+        <li><img src="{{LOGO:TadbirkorAyol-1.png}}" alt="Tadbirkor Ayol"></li>
+        <li><img src="{{LOGO:TN_logging-1.png}}" alt="TN Logging Asia"></li>
+        <li><img src="{{LOGO:AziaKraft-1.jpg}}" alt="AziaKraft"></li>
+      <li class="note"><a href="#contact"><span data-i18n="cl.note">Обсудить ваш проект</span> <svg class="ic"><use href="#arrow"/></svg></a></li>
+    </ul>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap contact">
     <div>
-      <h2 class="h2 reveal" data-i18n="ct.h">Расскажите о вашей задаче</h2>
-      <p class="intro reveal" data-i18n="ct.p">Позвоните или напишите в мессенджер. Обсудим проект и предложим формат работы.</p>
+      <h2 class="h2" data-i18n="ct.h">Расскажите о вашей задаче</h2>
+      <p class="intro" data-i18n="ct.p">Позвоните или напишите в мессенджер. Обсудим проект и предложим формат работы.</p>
     </div>
-    <div class="reveal">
+    <div>
       <div class="phone">
         <small data-i18n="ct.phone">Телефон</small>
         <a class="num" href="tel:+998901779933" id="phone">+998 90 177 99 33</a>
@@ -517,8 +504,8 @@ footer a{text-decoration:none}
 const I18N = {
 en: {
 "nav.about":"About","nav.practice":"Services","nav.approach":"Approach","nav.training":"Training","nav.clients":"Clients","nav.contact":"Contact","nav.menu":"Menu","nav.cta":"Discuss a project",
-"hero.title":"Legal and management consulting <em>in&nbsp;Uzbekistan</em>",
-"hero.lead":"We support companies in Uzbekistan and Central Asia, from founding documents and transactions to raising investment and building compliance systems. Lawyers, financial analysts and HR specialists work on your project as one team.",
+"hero.title":"Law, finance and HR for business <em>in&nbsp;Uzbekistan</em>",
+"hero.lead":"We take care of the legal and management side: documents and deals, tax benefits and investment, people and compliance. One team works on your project, so you don’t have to find a lawyer, a finance adviser and an HR consultant separately.",
 "hero.cta1":"Discuss a project","hero.cta2":"All services","vis.k":"Project support","vis.t":"Entering the Uzbek market","vis.st":"In progress","vis.s1":"Registration and founding documents","vis.s2":"Partner due diligence","vis.s3":"Tax benefits and subsidies","vis.s4":"Anti-corruption compliance","vis.b1":"Stage 3 of 4","vis.b2":"Sample project","vis.i1":"ICA partner","vis.tm":"One team per project","vis.r1":"Lawyer","vis.r2":"Finance","vis.r3":"HR","vis.r4":"Compliance",
 "hero.f1t":"ICA partner","hero.f1d":"Official partner organisation of the International Compliance Association in Uzbekistan",
 "hero.f2t":"Seven practice areas","hero.f2d":"Law, finance, HR, investment, mergers, compliance and project administration",
@@ -558,13 +545,13 @@ en: {
 "tr3.l":"<li>Intellectual property management: legal aspects</li><li>IT law</li><li>Contract management</li><li>Risk management</li><li>Describing business processes</li>",
 "tr4.h":"International Compliance Association","tr4.p":"USMC Consult is the ICA partner organisation in Uzbekistan. Through us, compliance specialists can take ICA training and qualifications on preferential terms.",
 "tr4.cta1":"Ask about training terms","tr4.cta2":"ICA website",
-"cl.h":"Trusted by","cl.sub":"International organisations, government bodies and private companies.","cl.pause":"Pause logos","cl.play":"Play logos",
+"cl.h":"Trusted by","cl.sub":"International organisations, government bodies and private companies.","cl.note":"Discuss your project",
 "ct.h":"Tell us about your task","ct.p":"Call us or send a message. We will discuss the project and suggest how to work together.","ct.phone":"Phone","ct.copy":"Copy number","ct.copied":"Number copied","ct.tg":"Message on Telegram"
 },
 uz: {
 "nav.about":"Kompaniya haqida","nav.practice":"Xizmatlar","nav.approach":"Yondashuv","nav.training":"Treninglar","nav.clients":"Mijozlar","nav.contact":"Aloqa","nav.menu":"Menyu","nav.cta":"Loyihani muhokama qilish",
-"hero.title":"O‘zbekistonda yuridik va <em>boshqaruv konsaltingi</em>",
-"hero.lead":"O‘zbekiston va Markaziy Osiyodagi kompaniyalarni ta’sis hujjatlari va bitimlardan tortib investitsiya jalb qilish va komplayens tizimlarigacha qo‘llab-quvvatlaymiz. Yuristlar, moliyachilar va HR mutaxassislari loyihangiz ustida bitta jamoa bo‘lib ishlaydi.",
+"hero.title":"O‘zbekistondagi biznes uchun <em>huquq, moliya va&nbsp;HR</em>",
+"hero.lead":"Biznesning yuridik va boshqaruv qismini o‘z zimmamizga olamiz: hujjatlar va bitimlar, soliq imtiyozlari va investitsiyalar, kadrlar va komplayens. Loyiha ustida bitta jamoa ishlaydi, shuning uchun yurist, moliyachi va HR maslahatchisini alohida izlashingiz shart emas.",
 "hero.cta1":"Loyihani muhokama qilish","hero.cta2":"Barcha yo‘nalishlar","vis.k":"Loyihani kuzatib borish","vis.t":"Kompaniyaning O‘zbekiston bozoriga kirishi","vis.st":"Jarayonda","vis.s1":"Ro‘yxatdan o‘tish va ta’sis hujjatlari","vis.s2":"Hamkorni due diligence qilish","vis.s3":"Soliq imtiyozlari va subsidiyalar","vis.s4":"Korrupsiyaga qarshi komplayens","vis.b1":"4 bosqichdan 3-si","vis.b2":"Loyiha namunasi","vis.i1":"ICA hamkori","vis.tm":"Loyihaga bitta jamoa","vis.r1":"Yurist","vis.r2":"Moliyachi","vis.r3":"HR","vis.r4":"Komplayens",
 "hero.f1t":"ICA hamkori","hero.f1d":"International Compliance Association’ning O‘zbekistondagi rasmiy hamkor tashkiloti",
 "hero.f2t":"Yetti yo‘nalish","hero.f2d":"Huquq, moliya, HR, investitsiyalar, qo‘shilishlar, komplayens va loyihalarni boshqarish",
@@ -604,13 +591,12 @@ uz: {
 "tr3.l":"<li>Intellektual mulkni boshqarish: huquqiy jihatlar</li><li>IT huquqi</li><li>Shartnomalarni boshqarish (Contract Management)</li><li>Xavflarni boshqarish</li><li>Biznes jarayonlarini tavsiflash</li>",
 "tr4.h":"International Compliance Association","tr4.p":"USMC Consult ICA’ning O‘zbekistondagi hamkor tashkiloti. Biz orqali komplayens mutaxassislari ICA dasturlari bo‘yicha imtiyozli shartlarda o‘qiydi va malakasini oshiradi.",
 "tr4.cta1":"O‘qish shartlarini bilish","tr4.cta2":"ICA sayti",
-"cl.h":"Bizga ishonishadi","cl.sub":"Xalqaro tashkilotlar, davlat tuzilmalari va xususiy kompaniyalar.","cl.pause":"Lentani to‘xtatish","cl.play":"Lentani yoqish",
+"cl.h":"Bizga ishonishadi","cl.sub":"Xalqaro tashkilotlar, davlat tuzilmalari va xususiy kompaniyalar.","cl.note":"Loyihangizni muhokama qilish",
 "ct.h":"Vazifangiz haqida aytib bering","ct.p":"Qo‘ng‘iroq qiling yoki messenjerga yozing. Loyihani muhokama qilib, ish formatini taklif qilamiz.","ct.phone":"Telefon","ct.copy":"Raqamni nusxalash","ct.copied":"Raqam nusxalandi","ct.tg":"Telegramga yozish"
 }};
-I18N.ru = {"cl.play":"Запустить ленту","ct.copied":"Номер скопирован"};
+I18N.ru = {"ct.copied":"Номер скопирован"};
 document.querySelectorAll('[data-i18n]').forEach(el => { I18N.ru[el.dataset.i18n] ??= el.innerHTML; });
 document.querySelectorAll('[data-i18n-alt]').forEach(el => { I18N.ru[el.dataset.i18nAlt] ??= el.alt; });
-I18N.ru["cl.pause"] = "Остановить ленту";
 const META = {ru:"USMC Consult — юридический, финансовый и управленческий консалтинг в Узбекистане и Центральной Азии.", en:"USMC Consult: legal, financial and management consulting in Uzbekistan and Central Asia.", uz:"USMC Consult: O‘zbekiston va Markaziy Osiyoda yuridik, moliyaviy va boshqaruv konsaltingi."};
 let lang = 'ru';
 const t = k => I18N[lang][k] ?? I18N.ru[k];
@@ -622,7 +608,7 @@ function setLang(l){
   document.querySelectorAll('[data-i18n-alt]').forEach(el => { el.alt = t(el.dataset.i18nAlt); });
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.querySelector('meta[name="description"]').content = META[l];
-  syncPause(); moveInd();
+  moveInd();
   try { localStorage.setItem('usmc-lang', l); } catch(e) {}
 }
 document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
@@ -660,12 +646,6 @@ tabs.forEach((x,i) => {
 addEventListener('resize', moveInd);
 document.fonts?.ready.then(moveInd);
 
-/* client marquee: duplicate once for a seamless loop, with a real pause control */
-const track = document.querySelector('.track'), g = track.firstElementChild.cloneNode(true);
-g.setAttribute('aria-hidden', 'true'); g.querySelectorAll('img').forEach(i => i.alt = ''); track.append(g);
-const marquee = document.querySelector('.marquee'), pauseBtn = document.querySelector('.pause');
-function syncPause(){ const p = marquee.classList.contains('paused'); pauseBtn.setAttribute('aria-pressed', p); pauseBtn.querySelector('span').textContent = t(p ? 'cl.play' : 'cl.pause'); pauseBtn.querySelector('.pp').setAttribute('d', p ? 'M8 5.5v13l11-6.5z' : 'M9 6v12M15 6v12'); }
-pauseBtn.addEventListener('click', () => { marquee.classList.toggle('paused'); syncPause(); });
 
 /* copy phone */
 const toast = document.querySelector('.toast'); let tt;
